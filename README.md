@@ -33,3 +33,26 @@ and textual representations of key metrics for my project.
    but others cannot (e.g., requests from other departments). Given
    our team's purpose, certain tasks need to be worked or marked as
    "won't fix" < ~2 weeks from request time.
+
+## Data Shape
+
+The CSV from Jira is a bit messy. It has duplicate column headers for
+"Sprint", for example, where those columns are populated from left to
+right with each of the sprints the story was in. Here is what those
+headers look like:
+
+``` csv
+Issue Type,Issue key,Issue id,Summary,Reporter,Status,Resolution,Created,Due date,Custom field (Unplanned?),Sprint,Sprint,Sprint,Labels,Labels,Custom field (Task Needed)
+```
+
+And here are the headers I need my CSV to have for the reports I want
+to generate:
+
+``` csv
+issue_type,issue_key,unplanned,sprint,completed_in_sprint,days_open,task_area
+```
+
+Eventually I'll likely want to generate different reports, and that
+will require me pulling more fields into my CSV, but for now I'll keep
+it small.
+
