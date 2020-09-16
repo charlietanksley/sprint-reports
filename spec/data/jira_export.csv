@@ -1,0 +1,4 @@
+Issue Type,Issue key,Issue id,Summary,Status,Resolution,Created,Custom field (Unplanned?),Sprint,Sprint,Sprint,Labels,Labels
+Task,PROJ-1,1,First issue,Done,Done,19/Aug/20 12:36 PM,,PROJ Sprint 1,PROJ Sprint 2,PROJ Sprint 3,proj-task-a,proj-label-1
+Task,PROJ-2,2,Second issue,Done,Done,21/Aug/20 12:36 PM,,PROJ Sprint 1,,,proj-task-a,
+Bug,PROJ-3,3,You guessed it - Third issue!,Done,Done,20/Aug/20 12:36 PM,Unplanned Work,PROJ Sprint 2,PROJ Sprint 3,,proj-task-b,proj-label-2

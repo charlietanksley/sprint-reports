@@ -1,0 +1,7 @@
+issue_type,issue_key,unplanned,sprint,completed_in_sprint,task_area
+Task,PROJ-1,1,,Done,Done,PROJ Sprint 1,false,proj-task-a
+Task,PROJ-1,1,,Done,Done,PROJ Sprint 2,false,proj-task-a
+Task,PROJ-1,1,,Done,Done,PROJ Sprint 3,true,proj-task-a
+Task,PROJ-2,2,,Done,Done,PROJ Sprint 1,true,proj-task-a
+Bug,PROJ-3,3,true,Done,Done,PROJ Sprint 2,false,proj-task-b
+Bug,PROJ-3,3,true,Done,Done,PROJ Sprint 3,true,proj-task-b
