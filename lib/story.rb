@@ -42,6 +42,10 @@ class Story
     row[UNPLANNED_FIELD].downcase == 'unplanned work'
   end
 
+  def worked?
+    !sprints.empty?
+  end
+
   private
 
   attr_reader :row

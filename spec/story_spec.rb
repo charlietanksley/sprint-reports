@@ -63,4 +63,23 @@ RSpec.describe Story do
   it 'knows what task area it is in' do
     expect(subject.task_area).to eq('a')
   end
+
+  describe 'when optional fields are empty' do
+    context 'when the story has been in no sprints' do
+      let(:headers) { %w[Sprint Sprint Status] }
+      let(:fields) { [nil, nil, 'To Do'] }
+
+      it 'has been in no sprints' do
+        expect(subject.sprints).to be_empty
+      end
+
+      it 'has not been completed in a sprint' do
+        expect(subject.completed_in_sprint).to be_nil
+      end
+
+      it 'knows that it has not been worked' do
+        expect(subject.worked?).to be_falsey
+      end
+    end
+  end
 end
