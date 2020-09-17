@@ -65,6 +65,15 @@ RSpec.describe Story do
   end
 
   describe 'when optional fields are empty' do
+    context 'when the story is not unplanned' do
+      let(:headers) { ['Custom field (Unplanned?)'] }
+      let(:fields) { [nil] }
+
+      it 'is not unplanned' do
+        expect(subject.unplanned?).to be_falsey
+      end
+    end
+
     context 'when the story has been in no sprints' do
       let(:headers) { %w[Sprint Sprint Status] }
       let(:fields) { [nil, nil, 'To Do'] }

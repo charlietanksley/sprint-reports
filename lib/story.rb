@@ -39,7 +39,7 @@ class Story
   end
 
   def unplanned?
-    row[UNPLANNED_FIELD].downcase == 'unplanned work'
+    row[UNPLANNED_FIELD] ? row[UNPLANNED_FIELD].downcase == 'unplanned work' : false
   end
 
   def worked?
