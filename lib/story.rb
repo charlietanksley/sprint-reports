@@ -45,10 +45,10 @@ class Story
   # where `name` is the part we want to bubble up for reporting
   # purposes.
   def task_area
-    labels.select { |label| /\w+-task-\w+/.match(label) }
-          .first
-          .split('-')
-          .last
+    labels.map { |label|
+      matches = label.match(/\w+-task-(?<name>\w+)/)&.named_captures
+      matches['name'] if matches
+    }.first
   end
 
   def unplanned?

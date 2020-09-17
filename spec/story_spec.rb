@@ -84,6 +84,15 @@ RSpec.describe Story do
       end
     end
 
+    context 'when there is no task area' do
+      let(:headers) { %w[Labels Labels] }
+      let(:fields) { [nil, nil] }
+
+      it 'has no task area' do
+        expect(subject.task_area).to be_nil
+      end
+    end
+
     context 'when the story has been in no sprints' do
       let(:headers) { %w[Sprint Sprint Status] }
       let(:fields) { [nil, nil, 'To Do'] }
