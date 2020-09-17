@@ -64,6 +64,16 @@ RSpec.describe Story do
     expect(subject.task_area).to eq('a')
   end
 
+  it 'can convert itself to the format needed for a sprint report' do
+    expected = [
+      ['Task', 'PROJ-1', true, 'PROJ Sprint 1', false, 'a'],
+      ['Task', 'PROJ-1', true, 'PROJ Sprint 2', false, 'a'],
+      ['Task', 'PROJ-1', true, 'PROJ Sprint 3', true, 'a']
+    ]
+
+    expect(subject.as_sprint_issues).to eq(expected)
+  end
+
   describe 'when optional fields are empty' do
     context 'when the story is not unplanned' do
       let(:headers) { ['Custom field (Unplanned?)'] }

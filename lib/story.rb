@@ -10,6 +10,19 @@ class Story
     @row = row
   end
 
+  def as_sprint_issues
+    sprints.map { |sprint|
+      [
+        issue_type,
+        issue_key,
+        unplanned?,
+        sprint,
+        completed_in_sprint == sprint,
+        task_area
+      ]
+    }
+  end
+
   def completed_in_sprint
     row[STATUS_FIELD].downcase == 'done' ? sprints.max : nil
   end
