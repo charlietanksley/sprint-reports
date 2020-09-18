@@ -74,6 +74,19 @@ RSpec.describe Story do
     expect(subject.as_sprint_issues).to eq(expected)
   end
 
+  describe 'configurable fields' do
+    context 'when task labels use a different pattern' do
+      let(:headers) { %w[Labels Labels] }
+      let(:fields) { %w[proj-task-a proj-label-1] }
+
+      subject { described_class.new(row, task_area_regex: /\w+-label-(?<name>\w+)/) }
+
+      it 'has no task area' do
+        expect(subject.task_area).to eq('1')
+      end
+    end
+  end
+
   describe 'when optional fields are empty' do
     context 'when the story is not unplanned' do
       let(:headers) { ['Custom field (Unplanned?)'] }

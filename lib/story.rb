@@ -6,8 +6,9 @@ class Story
   STATUS_FIELD = 'Status'.freeze
   UNPLANNED_FIELD = 'Custom field (Unplanned?)'.freeze
 
-  def initialize(row)
+  def initialize(row, task_area_regex: /\w+-task-(?<name>\w+)/)
     @row = row
+    @task_area_regex = task_area_regex
   end
 
   def as_sprint_issues
@@ -46,9 +47,10 @@ class Story
   # purposes.
   def task_area
     labels.map { |label|
-      matches = label.match(/\w+-task-(?<name>\w+)/)&.named_captures
+      matches = label.match(task_area_regex)&.named_captures
+
       matches['name'] if matches
-    }.first
+    }.compact.first
   end
 
   def unplanned?
@@ -62,6 +64,7 @@ class Story
   private
 
   attr_reader :row
+  attr_reader :task_area_regex
 
   def extract_list_field(field_key)
     fields.map { |key, value| value if key == field_key }.compact
