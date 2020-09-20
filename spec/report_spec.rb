@@ -17,4 +17,16 @@ RSpec.describe Report do
       expect(outfile.read).to eq(File.read(expected_output))
     end
   end
+
+  describe 'configuring fields' do
+    let(:report) {
+      described_class.new(input_file,
+                          task_area_regex: /\w+-label-(?<name>\w+)/)
+    }
+
+    it 'applies configurations to the stories in the sprints' do
+      task_areas = report.sprint_issues.map { |row| row[:task_area] }
+      expect(task_areas).to match_array(['1', '1', '1', nil, '2', '2'])
+    end
+  end
 end

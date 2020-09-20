@@ -2,8 +2,9 @@ require 'csv'
 require 'story'
 
 class Report
-  def initialize(filepath)
+  def initialize(filepath, **story_config)
     @filepath = filepath
+    @story_config = story_config
   end
 
   def write_csv(path)
@@ -16,7 +17,7 @@ class Report
   end
 
   def sprint_issues
-    contents.map { |issue| Story.new(issue) }
+    contents.map { |issue| Story.new(issue, **story_config) }
             .select(&:worked?)
             .flat_map(&:as_sprint_issues)
   end
@@ -24,6 +25,7 @@ class Report
   private
 
   attr_reader :filepath
+  attr_reader :story_config
 
   def contents
     @contents ||= CSV.read(filepath, headers: true)
