@@ -1,15 +1,16 @@
 # What
 
-A tool for generating the sprint reports and visualzations I need that
-Jira makes difficult to generate. This project will generate visual
-and textual representations of key metrics for my project.
+A tool for converting CSV exports from Jira into a format I need for
+creating helpful sprint reports and visualizations.
 
 ## Metrics
+
+The metrics I intend to generate from this data are:
 
 1. The types of stories completed in each sprint.
 2. The percent of unplanned work completed in the sprint.
 3. The percentage of tasks completed (v. rolled) in each sprint, by type.
-4. The cycle time of stories, by type.
+4. The overall percentage of stories completed in each sprint.
 
 ## Why these?
 
@@ -27,12 +28,13 @@ and textual representations of key metrics for my project.
    types of tasks can't roll without damaging our credibility with
    outside departments. To keep that trust high, we want to keep an
    eye on which sprint 'commitments' we miss on.
-4. *The cycle time of stories, by type.* We expect some types of
-   stories to sit in the backlog a long time (big tasks we keep
-   shaving bite-sized chunks from, low-priority improvements, etc.),
-   but others cannot (e.g., requests from other departments). Given
-   our team's purpose, certain tasks need to be worked or marked as
-   "won't fix" < ~2 weeks from request time.
+4. *The overall percentage of stories completed in each sprint.*
+   Knowing about story completion by type combined with sprint
+   composition by story type is a helpful proxy for managing
+   relationships with other departments. Overall story completion is a
+   helpful way to check on whether the team is overextended and how
+   likely we are to deliver a story that is further than one sprint
+   out. Not a perfect metric, but still useful.
 
 ## Data Shape
 
@@ -49,10 +51,9 @@ And here are the headers I need my CSV to have for the reports I want
 to generate:
 
 ``` csv
-issue_type,issue_key,unplanned,sprint,completed_in_sprint,days_open,task_area
+issue_type,issue_key,unplanned,sprint,completed_in_sprint,task_area
 ```
 
 Eventually I'll likely want to generate different reports, and that
 will require me pulling more fields into my CSV, but for now I'll keep
 it small.
-
