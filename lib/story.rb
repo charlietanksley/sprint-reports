@@ -13,14 +13,14 @@ class Story
 
   def as_sprint_issues
     sprints.map { |sprint|
-      [
-        issue_type,
-        issue_key,
-        unplanned?,
-        sprint,
-        completed_in_sprint == sprint,
-        task_area
-      ]
+      {
+        issue_type: issue_type,
+        issue_key: issue_key,
+        unplanned: unplanned?,
+        sprint: sprint,
+        completed_in_sprint: completed_in_sprint == sprint,
+        task_area: task_area
+      }
     }
   end
 

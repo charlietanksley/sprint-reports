@@ -66,9 +66,24 @@ RSpec.describe Story do
 
   it 'can convert itself to the format needed for a sprint report' do
     expected = [
-      ['Task', 'PROJ-1', true, 'PROJ Sprint 1', false, 'a'],
-      ['Task', 'PROJ-1', true, 'PROJ Sprint 2', false, 'a'],
-      ['Task', 'PROJ-1', true, 'PROJ Sprint 3', true, 'a']
+      { issue_type: 'Task',
+        issue_key: 'PROJ-1',
+        unplanned: true,
+        sprint: 'PROJ Sprint 1',
+        completed_in_sprint: false,
+        task_area: 'a' },
+      { issue_type: 'Task',
+        issue_key: 'PROJ-1',
+        unplanned: true,
+        sprint: 'PROJ Sprint 2',
+        completed_in_sprint: false,
+        task_area: 'a' },
+      { issue_type: 'Task',
+        issue_key: 'PROJ-1',
+        unplanned: true,
+        sprint: 'PROJ Sprint 3',
+        completed_in_sprint: true,
+        task_area: 'a' }
     ]
 
     expect(subject.as_sprint_issues).to eq(expected)

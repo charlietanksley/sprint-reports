@@ -10,8 +10,8 @@ class Report
   def write_csv(path)
     CSV.open(path, 'w') do |csv|
       csv << %w[issue_type issue_key unplanned sprint completed_in_sprint task_area]
-      sprint_issues.each do |row|
-        csv << row
+      sprint_issues.each do |sprint_issue|
+        csv << sprint_issue.values
       end
     end
   end
