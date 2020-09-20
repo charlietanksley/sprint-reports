@@ -57,3 +57,11 @@ issue_type,issue_key,unplanned,sprint,completed_in_sprint,task_area
 Eventually I'll likely want to generate different reports, and that
 will require me pulling more fields into my CSV, but for now I'll keep
 it small.
+
+# Usage
+
+```ruby
+require 'report'
+report = Report.new('jira-export.csv')
+report.write_csv('generated-output.csv')
+```
