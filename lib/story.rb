@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Story
-  ISSUE_TYPE_FIELD = 'Issue Type'.freeze
-  ISSUE_KEY_FIELD = 'Issue key'.freeze
-  LABEL_FIELD = 'Labels'.freeze
-  SPRINT_FIELD = 'Sprint'.freeze
-  STATUS_FIELD = 'Status'.freeze
-  UNPLANNED_FIELD = 'Custom field (Unplanned?)'.freeze
+  ISSUE_TYPE_FIELD = 'Issue Type'
+  ISSUE_KEY_FIELD = 'Issue key'
+  LABEL_FIELD = 'Labels'
+  SPRINT_FIELD = 'Sprint'
+  STATUS_FIELD = 'Status'
+  UNPLANNED_FIELD = 'Custom field (Unplanned?)'
 
   def initialize(row, task_area_regex: /\w+-task-(?<name>\w+)/)
     @row = row
