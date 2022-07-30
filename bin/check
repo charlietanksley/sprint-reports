@@ -1,0 +1,8 @@
+echo "Linter"
+bin/rubocop
+
+echo "\nTests"
+bin/rspec
+
+echo "Types"
+bin/steep check
