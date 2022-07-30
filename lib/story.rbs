@@ -1,0 +1,47 @@
+interface _Row
+  def [] (String) -> String
+end
+
+class Story
+  ISSUE_TYPE_FIELD: String
+
+  ISSUE_KEY_FIELD: String
+
+  LABEL_FIELD: String
+
+  SPRINT_FIELD: String
+
+  STATUS_FIELD: String
+
+  UNPLANNED_FIELD: String
+
+  def initialize: (untyped row, ?task_area_regex: Regexp task_area_regex) -> void
+
+  def as_sprint_issues: () -> Hash
+
+  def completed_in_sprint: () -> String?
+
+  def issue_key: () -> String
+
+  def issue_type: () -> String
+
+  def sprints: () -> Array<String>
+
+  def task_area: () -> String
+
+  def unplanned?: () -> Boolean
+
+  def worked?: () -> Boolean
+
+  private
+
+  attr_reader row: untyped
+
+  attr_reader task_area_regex: untyped
+
+  def extract_list_field: (untyped field_key) -> untyped
+
+  def fields: () -> untyped
+
+  def labels: () -> untyped
+end

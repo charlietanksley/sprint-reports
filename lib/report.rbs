@@ -1,0 +1,15 @@
+class Report
+  def initialize: (String filepath, **untyped story_config) -> void
+
+  def write_csv: (String path) -> untyped
+
+  def sprint_issues: () -> Hash
+
+  private
+
+  attr_reader filepath: untyped
+
+  attr_reader story_config: untyped
+
+  def contents: () -> untyped
+end
