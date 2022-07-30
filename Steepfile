@@ -1,12 +1,12 @@
 D = Steep::Diagnostic
 
 target :lib do
-  signature "sig"
+  signature 'sig'
 
-  check "lib"                       # Directory name
-  check "Gemfile"                   # File name
+  check 'lib'                       # Directory name
+  check 'Gemfile'                   # File name
 
-  configure_code_diagnostics(D::Ruby.strict)       # `strict` diagnostics setting
+  configure_code_diagnostics(D::Ruby.strict) # `strict` diagnostics setting
 end
 
 # target :test do

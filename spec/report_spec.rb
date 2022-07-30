@@ -2,7 +2,7 @@ $LOAD_PATH.unshift('lib')
 
 require 'pry-byebug'
 
-require 'report.rb'
+require 'report'
 
 RSpec.describe Report do
   let(:input_file) { 'spec/data/jira_export.csv' }
@@ -19,10 +19,10 @@ RSpec.describe Report do
   end
 
   describe 'configuring fields' do
-    let(:report) {
+    let(:report) do
       described_class.new(input_file,
                           task_area_regex: /\w+-label-(?<name>\w+)/)
-    }
+    end
 
     it 'applies configurations to the stories in the sprints' do
       task_areas = report.sprint_issues.map { |row| row[:task_area] }

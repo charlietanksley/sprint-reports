@@ -3,7 +3,7 @@ $LOAD_PATH.unshift('lib')
 require 'csv'
 require 'pry-byebug'
 
-require 'story.rb'
+require 'story'
 
 RSpec.describe Story do
   let(:headers) do
