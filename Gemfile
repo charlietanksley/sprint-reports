@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
-File.read('.tool-versions').match(/ruby\s(?<version>[^\n]+)/).named_captures['version']
+ruby '3.1.0'
 
-gem 'rspec'
 gem 'pry'
 gem 'pry-byebug'
+gem 'rspec'
+gem 'rubocop'
+gem 'rubocop-rspec'
 gem 'steep'
