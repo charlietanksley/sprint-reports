@@ -22,7 +22,7 @@ class Story
 
   def initialize: (_Row row, ?task_area_regex: Regexp task_area_regex) -> void
 
-  def as_sprint_issues: () -> Array[Hash[Symbol, (String|bool)]]
+  def as_sprint_issues: () -> Array[Hash[Symbol, (String|bool)?]]
 
   def completed_in_sprint: () -> String?
 
@@ -32,7 +32,7 @@ class Story
 
   def sprints: () -> Array[String]
 
-  def task_area: () -> String
+  def task_area: () -> String?
 
   def unplanned?: () -> bool
 

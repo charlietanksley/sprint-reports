@@ -6,3 +6,6 @@ bin/rspec
 
 echo "Types"
 bin/steep check
+
+echo "Tests with types"
+rbs --log-level=warn test --target Report --target Story rspec

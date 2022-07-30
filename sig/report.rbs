@@ -1,9 +1,13 @@
+interface _Writable
+  def open: (String path, String mode) -> untyped
+end
+
 class Report
   def initialize: (String filepath, **untyped story_config) -> void
 
-  def write_csv: (String path) -> untyped
+  def write_csv: (_Writable path) -> untyped
 
-  def sprint_issues: () -> Hash[Symbol, String]
+  def sprint_issues: () -> Array[Hash[Symbol, (String|bool)?]]
 
   private
 

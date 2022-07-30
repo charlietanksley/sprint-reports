@@ -75,5 +75,6 @@ As of 2022-07-30 I'm experimenting with Ruby 3+ and types. So far, so good? Here
 3. I updated as many datatypes as I could using [this reference](https://github.com/ruby/rbs/blob/master/docs/syntax.md) and [this annotation guide](https://github.com/soutaro/steep/blob/master/manual/annotations.md).
 4. Ran `steep check` along the way to make sure the types I was adding matched what steep was going to expect.
 5. Running `steep stats` is also interesting, but it might be too much info.
+6. Running `rbs --log-level=warn test --target Report --target Story rspec` also told me about some expectation mismatches.
 
 Verdict so far: I think this is going to be useful for _some_ things. Specifically, I have a project where I'm writing a series of adapters and I'm worried about them getting out of sync. I believe this would prevent that, which would be massively useful for me.
