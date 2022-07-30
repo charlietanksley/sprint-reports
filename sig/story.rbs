@@ -1,8 +1,13 @@
 interface _Row
-  def [] (String) -> String
+  def []: (String) -> String
 end
 
 class Story
+  @task_area_regex: untyped
+  @sprints: untyped
+  @fields: untyped
+  @labels: untyped
+
   ISSUE_TYPE_FIELD: String
 
   ISSUE_KEY_FIELD: String
@@ -15,9 +20,9 @@ class Story
 
   UNPLANNED_FIELD: String
 
-  def initialize: (untyped row, ?task_area_regex: Regexp task_area_regex) -> void
+  def initialize: (_Row row, ?task_area_regex: Regexp task_area_regex) -> void
 
-  def as_sprint_issues: () -> Hash
+  def as_sprint_issues: () -> Array[Hash[Symbol, (String|bool)]]
 
   def completed_in_sprint: () -> String?
 
@@ -25,13 +30,13 @@ class Story
 
   def issue_type: () -> String
 
-  def sprints: () -> Array<String>
+  def sprints: () -> Array[String]
 
   def task_area: () -> String
 
-  def unplanned?: () -> Boolean
+  def unplanned?: () -> bool
 
-  def worked?: () -> Boolean
+  def worked?: () -> bool
 
   private
 

@@ -3,7 +3,7 @@ class Report
 
   def write_csv: (String path) -> untyped
 
-  def sprint_issues: () -> Hash
+  def sprint_issues: () -> Hash[Symbol, String]
 
   private
 

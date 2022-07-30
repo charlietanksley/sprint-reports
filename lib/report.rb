@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'csv'
 require 'story'
 
@@ -24,10 +26,10 @@ class Report
 
   private
 
-  attr_reader :filepath
-  attr_reader :story_config
+  attr_reader :filepath, :story_config
 
   def contents
+    # @type ivar @contents: CSV::Table
     @contents ||= CSV.read(filepath, headers: true)
   end
 end

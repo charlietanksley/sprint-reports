@@ -5,3 +5,4 @@ File.read('.tool-versions').match(/ruby\s(?<version>[^\n]+)/).named_captures['ve
 gem 'rspec'
 gem 'pry'
 gem 'pry-byebug'
+gem 'steep'
