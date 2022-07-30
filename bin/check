@@ -1,7 +1,9 @@
+#!/bin/bash
 echo "Linter"
 bin/rubocop
 
-echo "\nTests"
+echo ""
+echo "Tests"
 bin/rspec
 
 echo "Types"
