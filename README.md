@@ -65,3 +65,16 @@ require 'report'
 report = Report.new('jira-export.csv')
 report.write_csv('generated-output.csv')
 ```
+
+## Ruby types
+
+As of 2022-07-30 I'm experimenting with Ruby 3+ and types. So far, so good? Here's what I did (after I upgraded Ruby):
+
+1. Ran `rbs prototype rb infile.rb > sig/outfile.rbs` for each of my (2) source files to get skeletons.
+2. After installing (steep)[https://github.com/soutaro/steep], I ran `steep init`, but I'll be honest I don't understand what to do with the result.
+3. I updated as many datatypes as I could using [this reference](https://github.com/ruby/rbs/blob/master/docs/syntax.md) and [this annotation guide](https://github.com/soutaro/steep/blob/master/manual/annotations.md).
+4. Ran `steep check` along the way to make sure the types I was adding matched what steep was going to expect.
+5. Running `steep stats` is also interesting, but it might be too much info.
+6. Running `rbs --log-level=warn test --target Report --target Story rspec` also told me about some expectation mismatches.
+
+Verdict so far: I think this is going to be useful for _some_ things. Specifically, I have a project where I'm writing a series of adapters and I'm worried about them getting out of sync. I believe this would prevent that, which would be massively useful for me.

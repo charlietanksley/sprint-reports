@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Story
-  ISSUE_TYPE_FIELD = 'Issue Type'.freeze
-  ISSUE_KEY_FIELD = 'Issue key'.freeze
-  LABEL_FIELD = 'Labels'.freeze
-  SPRINT_FIELD = 'Sprint'.freeze
-  STATUS_FIELD = 'Status'.freeze
-  UNPLANNED_FIELD = 'Custom field (Unplanned?)'.freeze
+  ISSUE_TYPE_FIELD = 'Issue Type'
+  ISSUE_KEY_FIELD = 'Issue key'
+  LABEL_FIELD = 'Labels'
+  SPRINT_FIELD = 'Sprint'
+  STATUS_FIELD = 'Status'
+  UNPLANNED_FIELD = 'Custom field (Unplanned?)'
 
   def initialize(row, task_area_regex: /\w+-task-(?<name>\w+)/)
     @row = row
@@ -12,16 +14,16 @@ class Story
   end
 
   def as_sprint_issues
-    sprints.map { |sprint|
+    sprints.map do |sprint|
       {
-        issue_type: issue_type,
-        issue_key: issue_key,
+        issue_type:,
+        issue_key:,
         unplanned: unplanned?,
-        sprint: sprint,
+        sprint:,
         completed_in_sprint: completed_in_sprint == sprint,
-        task_area: task_area
+        task_area:
       }
-    }
+    end
   end
 
   def completed_in_sprint
@@ -46,11 +48,11 @@ class Story
   # where `name` is the part we want to bubble up for reporting
   # purposes.
   def task_area
-    labels.map { |label|
+    labels.map do |label|
       matches = label.match(task_area_regex)&.named_captures
 
       matches['name'] if matches
-    }.compact.first
+    end.compact.first
   end
 
   def unplanned?
@@ -63,8 +65,7 @@ class Story
 
   private
 
-  attr_reader :row
-  attr_reader :task_area_regex
+  attr_reader :row, :task_area_regex
 
   def extract_list_field(field_key)
     fields.map { |key, value| value if key == field_key }.compact
